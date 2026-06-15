@@ -1,0 +1,29 @@
+[0.009s] Invoking command in '/home/ubuntu/Documents/ros2_tutorial/build/ros2_tutorial_interfaces': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/ubuntu/Documents/ros2_tutorial/install/ros2_tutorial:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake /home/ubuntu/Documents/ros2_tutorial/src/ros2_tutorial_interfaces -DCMAKE_INSTALL_PREFIX=/home/ubuntu/Documents/ros2_tutorial/install/ros2_tutorial_interfaces
+[0.074s] -- The C compiler identification is GNU 13.3.0
+[0.127s] -- The CXX compiler identification is GNU 13.3.0
+[0.138s] -- Detecting C compiler ABI info
+[0.201s] -- Detecting C compiler ABI info - done
+[0.209s] -- Check for working C compiler: /usr/bin/cc - skipped
+[0.209s] -- Detecting C compile features
+[0.210s] -- Detecting C compile features - done
+[0.216s] -- Detecting CXX compiler ABI info
+[0.283s] -- Detecting CXX compiler ABI info - done
+[0.290s] -- Check for working CXX compiler: /usr/bin/c++ - skipped
+[0.290s] -- Detecting CXX compile features
+[0.291s] -- Detecting CXX compile features - done
+[0.293s] -- Found ament_cmake: 2.5.6 (/opt/ros/jazzy/share/ament_cmake/cmake)
+[0.386s] -- Found Python3: /usr/bin/python3 (found version "3.12.3") found components: Interpreter 
+[0.452s] -- Found rosidl_default_generators: 1.6.0 (/opt/ros/jazzy/share/rosidl_default_generators/cmake)
+[0.455s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[0.490s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[0.515s] -- Found rosidl_adapter: 4.6.7 (/opt/ros/jazzy/share/rosidl_adapter/cmake)
+[0.768s] [31mCMake Error at /opt/ros/jazzy/share/rosidl_cmake/cmake/rosidl_generate_interfaces.cmake:223 (message):
+[0.768s]   Packages installing interfaces must include
+[0.768s]   '<member_of_group>rosidl_interface_packages</member_of_group>' in their
+[0.768s]   package.xml
+[0.769s] Call Stack (most recent call first):
+[0.769s]   CMakeLists.txt:18 (rosidl_generate_interfaces)
+[0.769s] 
+[0.769s] [0m
+[0.769s] -- Configuring incomplete, errors occurred!
+[0.774s] Invoked command in '/home/ubuntu/Documents/ros2_tutorial/build/ros2_tutorial_interfaces' returned '1': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/ubuntu/Documents/ros2_tutorial/install/ros2_tutorial:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake /home/ubuntu/Documents/ros2_tutorial/src/ros2_tutorial_interfaces -DCMAKE_INSTALL_PREFIX=/home/ubuntu/Documents/ros2_tutorial/install/ros2_tutorial_interfaces

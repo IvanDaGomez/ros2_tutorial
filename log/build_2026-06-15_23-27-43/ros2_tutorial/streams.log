@@ -1,0 +1,27 @@
+[0.474s] Invoking command in '/home/ubuntu/Documents/ros2_tutorial/src/ros2_tutorial': DEBUGINFOD_URLS=https://debuginfod.ubuntu.com PYTHONPATH=/home/ubuntu/Documents/ros2_tutorial/build/ros2_tutorial/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/ubuntu/Documents/ros2_tutorial/install/ros2_tutorial/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/ros2_tutorial build --build-base /home/ubuntu/Documents/ros2_tutorial/build/ros2_tutorial/build install --record /home/ubuntu/Documents/ros2_tutorial/build/ros2_tutorial/install.log --single-version-externally-managed install_data
+[0.619s] running egg_info
+[0.628s] writing ../../build/ros2_tutorial/ros2_tutorial.egg-info/PKG-INFO
+[0.628s] writing dependency_links to ../../build/ros2_tutorial/ros2_tutorial.egg-info/dependency_links.txt
+[0.628s] writing entry points to ../../build/ros2_tutorial/ros2_tutorial.egg-info/entry_points.txt
+[0.628s] writing requirements to ../../build/ros2_tutorial/ros2_tutorial.egg-info/requires.txt
+[0.629s] writing top-level names to ../../build/ros2_tutorial/ros2_tutorial.egg-info/top_level.txt
+[0.646s] reading manifest file '../../build/ros2_tutorial/ros2_tutorial.egg-info/SOURCES.txt'
+[0.647s] writing manifest file '../../build/ros2_tutorial/ros2_tutorial.egg-info/SOURCES.txt'
+[0.647s] running build
+[0.647s] running build_py
+[0.647s] copying ros2_tutorial/action_service_node.py -> /home/ubuntu/Documents/ros2_tutorial/build/ros2_tutorial/build/lib/ros2_tutorial
+[0.647s] running install
+[0.651s] running install_lib
+[0.660s] copying /home/ubuntu/Documents/ros2_tutorial/build/ros2_tutorial/build/lib/ros2_tutorial/action_service_node.py -> /home/ubuntu/Documents/ros2_tutorial/install/ros2_tutorial/lib/python3.12/site-packages/ros2_tutorial
+[0.660s] byte-compiling /home/ubuntu/Documents/ros2_tutorial/install/ros2_tutorial/lib/python3.12/site-packages/ros2_tutorial/action_service_node.py to action_service_node.cpython-312.pyc
+[0.661s] running install_data
+[0.661s] running install_egg_info
+[0.670s] removing '/home/ubuntu/Documents/ros2_tutorial/install/ros2_tutorial/lib/python3.12/site-packages/ros2_tutorial-0.0.0-py3.12.egg-info' (and everything under it)
+[0.670s] Copying ../../build/ros2_tutorial/ros2_tutorial.egg-info to /home/ubuntu/Documents/ros2_tutorial/install/ros2_tutorial/lib/python3.12/site-packages/ros2_tutorial-0.0.0-py3.12.egg-info
+[0.671s] running install_scripts
+[0.757s] Installing action_client_node script to /home/ubuntu/Documents/ros2_tutorial/install/ros2_tutorial/lib/ros2_tutorial
+[0.757s] Installing action_service_node script to /home/ubuntu/Documents/ros2_tutorial/install/ros2_tutorial/lib/ros2_tutorial
+[0.758s] Installing client_service_node script to /home/ubuntu/Documents/ros2_tutorial/install/ros2_tutorial/lib/ros2_tutorial
+[0.758s] Installing service_node script to /home/ubuntu/Documents/ros2_tutorial/install/ros2_tutorial/lib/ros2_tutorial
+[0.758s] writing list of installed files to '/home/ubuntu/Documents/ros2_tutorial/build/ros2_tutorial/install.log'
+[0.775s] Invoked command in '/home/ubuntu/Documents/ros2_tutorial/src/ros2_tutorial' returned '0': DEBUGINFOD_URLS=https://debuginfod.ubuntu.com PYTHONPATH=/home/ubuntu/Documents/ros2_tutorial/build/ros2_tutorial/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/ubuntu/Documents/ros2_tutorial/install/ros2_tutorial/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/ros2_tutorial build --build-base /home/ubuntu/Documents/ros2_tutorial/build/ros2_tutorial/build install --record /home/ubuntu/Documents/ros2_tutorial/build/ros2_tutorial/install.log --single-version-externally-managed install_data
