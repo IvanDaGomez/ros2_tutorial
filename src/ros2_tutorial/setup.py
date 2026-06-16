@@ -10,6 +10,7 @@ setup(
         ('share/ament_index/resource_index/packages',
             ['resource/' + package_name]),
         ('share/' + package_name, ['package.xml']),
+        ('share/' + package_name + '/launch', ['launch/multi_node_launch.py']),
     ],
     install_requires=['setuptools'],
     zip_safe=True,
@@ -28,6 +29,8 @@ setup(
             'client_service_node = ros2_tutorial.client_service_node:main',
             'action_service_node = ros2_tutorial.action_service_node:main',
             'action_client_node = ros2_tutorial.action_client_node:main',
+            'parameter_example = ros2_tutorial.parameter_example:main',
+            'parameter_callback = ros2_tutorial.parameter_callback:main',
         ],
     },
 )

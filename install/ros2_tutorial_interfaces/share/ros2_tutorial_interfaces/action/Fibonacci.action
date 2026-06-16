@@ -1,8 +1,0 @@
-# Goal definition
-int32 order
----
-# Result definition
-int32[] sequence
----
-# Feedback definition
-int32[] partial_sequence
