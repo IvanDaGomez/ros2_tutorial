@@ -108,79 +108,116 @@ def main(args=None):
 
 if __name__ == '__main__':
     main()
-2. Update package.xml and setup.py
+```
+
+### 2. Update package.xml and setup.py
+
 Ensure your node is executable and correctly mapped inside your Python package.
 
-In package.xml, confirm you have rclpy mapped:
+In `package.xml`, confirm you have rclpy mapped:
 
-XML
+```xml
 <depend>rclpy</depend>
-In setup.py, expose the node point entry mapping cleanly:
+```
 
-Python
+In `setup.py`, expose the node point entry mapping cleanly:
+
+```python
     entry_points={
         'console_scripts': [
             'param_tuning_node = your_package.param_tuning_node:main',
         ],
     },
-Interacting with Parameters via Terminal (CLI)
-Once you build and compile your workspace (colcon build && source install/setup.bash), you can fully inspect and manipulate your parameters directly from the command line while your node runs.
+```
 
-1. Run the Node
-Bash
+---
+
+## Interacting with Parameters via Terminal (CLI)
+
+Once you build and compile your workspace (`colcon build && source install/setup.bash`), you can fully inspect and manipulate your parameters directly from the command line while your node runs.
+
+### 1. Run the Node
+
+```bash
 ros2 run your_package param_tuning_node
-2. List Active Parameters
+```
+
+### 2. List Active Parameters
+
 Open a second terminal window and run the following to discover all declared parameters belonging to a node:
 
-Bash
+```bash
 ros2 param list
-Output:
+```
 
-Plaintext
+**Output:**
+
+```
 /param_tuning_node:
   execution_frequency
   max_linear_velocity
   robot_safety_mode
   use_sim_time
-3. Read an Active Parameter Value
+```
+
+### 3. Read an Active Parameter Value
+
 To check the exact current assignment state of a specific key variable:
 
-Bash
+```bash
 ros2 param get /param_tuning_node robot_safety_mode
-Output:
+```
 
-Plaintext
+**Output:**
+
+```
 String value is: standard
-4. Dynamic Live Adjustment (The Magic Step)
+```
+
+### 4. Dynamic Live Adjustment (The Magic Step)
+
 To change a node parameter while the code execution loop is actively cycling inside your robot:
 
-Bash
+```bash
 ros2 param set /param_tuning_node execution_frequency 4.0
+```
+
 Look back at your main running node window. The output log will instantly adapt, running your processing loop four times faster every single second without a restart!
 
 If you try to inject an unsafe value that violates your validation conditions:
 
-Bash
+```bash
 ros2 param set /param_tuning_node max_linear_velocity 5.2
+```
+
 The terminal will return a failure report, and your node will throw a rejected log flag keeping your system safe.
 
-Loading Parameters via YAML Configuration Files
-When running automated architectures or launch setups, passing continuous updates through raw terminals is inefficient. Instead, you drop configurations into standard .yaml resource sheets.
+---
 
-1. Create the Config File
-Create a new directory and configuration sheet inside your package architecture (src/your_package/config/robot_params.yaml):
+## Loading Parameters via YAML Configuration Files
 
-YAML
+When running automated architectures or launch setups, passing continuous updates through raw terminals is inefficient. Instead, you drop configurations into standard `.yaml` resource sheets.
+
+### 1. Create the Config File
+
+Create a new directory and configuration sheet inside your package architecture (`src/your_package/config/robot_params.yaml`):
+
+```yaml
 /param_tuning_node:
   ros__parameters:
     execution_frequency: 2.5
     robot_safety_mode: "emergency_override"
     max_linear_velocity: 1.2
-CRITICAL SYNTAX NOTE: ROS 2 configuration parameters require a strict two-space indentation structure, a clear root namespace identifier (/param_tuning_node), and a dedicated tag label titled exactly ros__parameters: (with two consecutive underscores).
+```
 
-2. Boot up Using the Configuration File
-To spin up your node while forcing it to read all its default parameters directly out of your custom parameters configuration sheet, use the --ros-args flag argument structure:
+> **CRITICAL SYNTAX NOTE:** ROS 2 configuration parameters require a strict two-space indentation structure, a clear root namespace identifier (`/param_tuning_node`), and a dedicated tag label titled exactly `ros__parameters:` (with two consecutive underscores).
 
-Bash
+### 2. Boot up Using the Configuration File
+
+To spin up your node while forcing it to read all its default parameters directly out of your custom parameters configuration sheet, use the `--ros-args` flag argument structure:
+
+```bash
 ros2 run your_package param_tuning_node --ros-args --params-file src/your_package/config/robot_params.yaml
-The node will initialize with the frequency set to 2.5Hz and safety configuration automatically re-mapped to emergency_override.
+```
+
+The node will initialize with the frequency set to 2.5Hz and safety configuration automatically re-mapped to `emergency_override`.

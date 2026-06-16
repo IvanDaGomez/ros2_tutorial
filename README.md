@@ -9,12 +9,14 @@ cd ~/Documents/ros2_tutorial/src
 ros2 pkg create --build-type ament_cmake ros2_tutorial_interfaces
 Create an action folder and file inside the custom interface package.
 
-Bash
+```bash
 mkdir -p ros2_tutorial_interfaces/action
 touch ros2_tutorial_interfaces/action/Fibonacci.action
+```
+
 Define the action interface in the Fibonacci.action file.
 
-Plaintext
+```plaintext
 # Goal definition
 int32 order
 ---
@@ -23,11 +25,13 @@ int32[] sequence
 ---
 # Feedback definition
 int32[] partial_sequence
+```
+
 Configure the interface package files to compile the action bindings correctly.
 
 Inside ros2_tutorial_interfaces/CMakeLists.txt, ensure it includes the generator macro before the ament_package() seal:
 
-CMake
+```cmake
 cmake_minimum_required(VERSION 3.8)
 project(ros2_tutorial_interfaces)
 
@@ -55,11 +59,13 @@ if(BUILD_TESTING)
 endif()
 
 ament_package()
+```
+
 Inside ros2_tutorial_interfaces/package.xml, include the interface package group strictly wrapped inside the <export> element:
 
-XML
+```xml
 <?xml version="1.0"?>
-<?xml-model href="[http://download.ros.org/schema/package_format3.xsd](http://download.ros.org/schema/package_format3.xsd)" schematypens="[http://www.w3.org/2001/XMLSchema](http://www.w3.org/2001/XMLSchema)"?>
+<?xml-model href="http://download.ros.org/schema/package_format3.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
 <package format="3">
   <name>ros2_tutorial_interfaces</name>
   <version>0.0.0</version>
@@ -80,24 +86,30 @@ XML
     <member_of_group>rosidl_interface_packages</member_of_group>
   </export>
 </package>
+```
+
 Build the interface package first to generate your custom dependencies.
 
-Bash
+```bash
 cd ~/Documents/ros2_tutorial
 rm -rf build/ros2_tutorial_interfaces install/ros2_tutorial_interfaces
 colcon build --packages-select ros2_tutorial_interfaces
+```
+
 Create a separate python package for the action nodes (if not already created).
 
-Bash
+```bash
 cd ~/Documents/ros2_tutorial/src
 ros2 pkg create --build-type ament_python ros2_tutorial
+```
+
 Update your processing configuration manifest files for your python nodes.
 
 Inside ros2_tutorial/package.xml, declare the custom interface package dependency (Do NOT add any interface group or export tags here):
 
-XML
+```xml
 <?xml version="1.0"?>
-<?xml-model href="[http://download.ros.org/schema/package_format3.xsd](http://download.ros.org/schema/package_format3.xsd)" schematypens="[http://www.w3.org/2001/XMLSchema](http://www.w3.org/2001/XMLSchema)"?>
+<?xml-model href="http://download.ros.org/schema/package_format3.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
 <package format="3">
   <name>ros2_tutorial</name>
   <version>0.0.0</version>
@@ -118,15 +130,19 @@ XML
     <build_type>ament_python</build_type>
   </export>
 </package>
+```
+
 Create the execution scripts inside your package source directory.
 
-Bash
+```bash
 cd ~/Documents/ros2_tutorial/src/ros2_tutorial/ros2_tutorial
 touch action_server_node.py action_client_node.py
 chmod +x action_server_node.py action_client_node.py
+```
+
 Implement clean execution logic blocks without indentation nesting traps.
 
-Python
+```python
 # action_server_node.py
 #!/usr/bin/env python3
 import rclpy
@@ -174,7 +190,9 @@ def main(args=None):
 
 if __name__ == '__main__':
     main()
-Python
+```
+
+```python
 # action_client_node.py
 #!/usr/bin/env python3
 import rclpy
@@ -223,21 +241,26 @@ def main(args=None):
 
 if __name__ == '__main__':
     main()
+```
+
 Expose the execution nodes in your package's setup.py layout.
 
-Python
+```python
     entry_points={
         'console_scripts': [
             'action_server_node = ros2_tutorial.action_server_node:main',
             'action_client_node = ros2_tutorial.action_client_node:main',
         ],
     },
+```
+
 Compile the workspace from a clean state and launch.
 
-Bash
+```bash
 cd ~/Documents/ros2_tutorial
 rm -rf build/ install/ log/
 source /opt/ros/jazzy/setup.bash
 colcon build
 source install/setup.bash
 ros2 run ros2_tutorial action_client_node
+```
