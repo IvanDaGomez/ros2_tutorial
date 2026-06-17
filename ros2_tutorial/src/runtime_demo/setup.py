@@ -24,6 +24,9 @@ setup(
     },
     entry_points={
         'console_scripts': [
+            'runtime_demo = runtime_demo.execution_demo:main',
+            'turtle_control = runtime_demo.turtle_control:main',
         ],
+
     },
 )
