@@ -6,14 +6,14 @@
 <robot name="simple_robot">
   <link name="base_link">
     <visual>
-      <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.05"/>
+      <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
       <geometry>
         <box size="0.5 0.4 0.1"/>
       </geometry>
-      <material name="blue"/>
+      <material name="gray"/>
     </visual>
   </link>
-  <link name="left_wheel_link">
+  <link name="left_wheel">
     <visual>
       <origin rpy="1.5708 0.0 0.0" xyz="0.0 0.0 0.0"/>
       <geometry>
@@ -24,11 +24,11 @@
   </link>
   <joint name="left_wheel_joint" type="continuous">
     <parent link="base_link"/>
-    <child link="left_wheel_link"/>
-    <origin rpy="0.0 0.0 0.0" xyz="0.0 0.225 0.1"/>
+    <child link="left_wheel"/>
+    <origin rpy="0.0 0.0 0.0" xyz="0.0 0.225 -0.05"/>
     <axis xyz="0.0 1.0 0.0"/>
   </joint>
-  <link name="right_wheel_link">
+  <link name="right_wheel">
     <visual>
       <origin rpy="1.5708 0.0 0.0" xyz="0.0 0.0 0.0"/>
       <geometry>
@@ -39,8 +39,47 @@
   </link>
   <joint name="right_wheel_joint" type="continuous">
     <parent link="base_link"/>
-    <child link="right_wheel_link"/>
-    <origin rpy="0.0 0.0 0.0" xyz="0.0 -0.225 0.1"/>
+    <child link="right_wheel"/>
+    <origin rpy="0.0 0.0 0.0" xyz="0.0 -0.225 -0.05"/>
     <axis xyz="0.0 1.0 0.0"/>
+  </joint>
+  <link name="lidar_link">
+    <visual>
+      <geometry>
+        <cylinder length="0.1" radius="0.05"/>
+      </geometry>
+      <material name="black"/>
+    </visual>
+  </link>
+  <joint name="lidar_joint" type="fixed">
+    <parent link="base_link"/>
+    <child link="lidar_link"/>
+    <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.10"/>
+  </joint>
+  <link name="camera_link">
+    <visual>
+      <geometry>
+        <box size="0.1 0.05 0.05"/>
+      </geometry>
+      <material name="black"/>
+    </visual>
+  </link>
+  <joint name="camera_joint" type="fixed">
+    <parent link="base_link"/>
+    <child link="camera_link"/>
+    <origin rpy="0.0 0.0 0.0" xyz="0.10 0.0 0.05"/>
+  </joint>
+  <link name="camera_optical_frame">
+    <visual>
+      <geometry>
+        <box size="0.05 0.05 0.05"/>
+      </geometry>
+      <material name="black"/>
+    </visual>
+  </link>
+  <joint name="camera_optical_frame_joint" type="fixed">
+    <parent link="camera_link"/>
+    <child link="camera_optical_frame"/>
+    <origin rpy="-1.5708 0.0 -1.5708" xyz="0.0 0.0 0.0"/>
   </joint>
 </robot>
